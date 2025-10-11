@@ -8,6 +8,7 @@
 body {
     width: 50vw;
     margin: auto;
+    padding: 20px 30px;
 }
 
 .grid {
@@ -16,7 +17,6 @@ body {
     border-style: solid;
     border-width: 1px;
     border-color: rgb(190, 190, 190);
-    margin: 20px 0;
 
     display: flex;
     justify-content: flex-start;
