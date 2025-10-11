@@ -1,4 +1,5 @@
 let mode = 'etch';
+let mouse_down = 0;
 let strength = 15;
 
 function darken(elem) {
@@ -8,23 +9,29 @@ function darken(elem) {
     elem.style.backgroundColor = `rgb(${darkness}, ${darkness}, ${darkness})`;
 }
 
+function draw(event) {
+    if (mouse_down === 0)
+        return;
+
+    switch (mode) {
+        case 'etch':
+            darken(event.target);
+            break;
+        default:
+            break;
+    }
+}
+
 // Body
 let body = document.querySelector("body");
 
 // Grid
 let grid = document.createElement('div');
 grid.setAttribute("class", "grid");
-
-grid.addEventListener('mouseover', (e) => {
-    switch (mode) {
-        case 'etch':
-            darken(e.target);
-            break;
-
-        default:
-            break;
-    }
-})
+grid.onmousedown = (e) => { mouse_down = 1; draw(e) };
+grid.onmouseup = () => { mouse_down = 0; };
+grid.onmouseleave = () => { mouse_down = 0; };
+grid.onmouseover = draw;
 
 // Squares
 const grid_size = 16;
