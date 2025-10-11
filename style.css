@@ -15,11 +15,14 @@ body {
     aspect-ratio: 1 / 1;
     border-style: solid;
     border-width: 1px;
+    border-color: rgb(190, 190, 190);
     margin: 20px 0;
 
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .square {
