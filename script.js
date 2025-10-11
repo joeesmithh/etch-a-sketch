@@ -5,26 +5,10 @@ function changeColor(elem) {
 
 // Body
 let body = document.querySelector("body");
-body.setAttribute("style", `
-    width: 45%;
-    height: 100vh;
-    margin: auto; 
-    align-content: center;      
-`);
 
 // Grid
 let grid = document.createElement('div');
 grid.setAttribute("class", "grid");
-grid.setAttribute("style", `
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-style: solid;
-    border-width: 1px;
-
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-`);
 
 grid.addEventListener('mouseover', (e) => {
     changeColor(e.target);
@@ -36,18 +20,10 @@ let square_count = grid_size * grid_size;
 let square_size = 100 / grid_size;
 for (let i = 0; i < square_count; i++) {
     let square = document.createElement('div');
-    square.setAttribute(`id`, `square${i}`);
-    square.setAttribute("style", `
-        width: ${square_size}%;
-        height: ${square_size}%;
-        background-color: black;
-        opacity: 0;
-    `);
-
-    // square.addEventListener('mouseenter', (e) => {
-    //     changeColor(e.target);
-    // });
-
+    square.classList.add('square');
+    square.style.width = `${square_size}%`;
+    square.style.height = `${square_size}%`;
+    square.style.opacity = 0;
     grid.appendChild(square);
 }
 
