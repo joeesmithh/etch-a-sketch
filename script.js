@@ -1,6 +1,11 @@
-function changeColor(elem) {
-    let o = parseFloat(elem.style.opacity);
-    elem.style.opacity = `${o + 0.1}`;
+let mode = 'etch';
+let strength = 15;
+
+function darken(elem) {
+    let darkness = Math.abs(
+        parseInt(elem.style.backgroundColor.
+            split(/[rgb\(\), ]/).at(4)) - strength);
+    elem.style.backgroundColor = `rgb(${darkness}, ${darkness}, ${darkness})`;
 }
 
 // Body
@@ -11,7 +16,14 @@ let grid = document.createElement('div');
 grid.setAttribute("class", "grid");
 
 grid.addEventListener('mouseover', (e) => {
-    changeColor(e.target);
+    switch (mode) {
+        case 'etch':
+            darken(e.target);
+            break;
+
+        default:
+            break;
+    }
 })
 
 // Squares
@@ -23,7 +35,7 @@ for (let i = 0; i < square_count; i++) {
     square.classList.add('square');
     square.style.width = `${square_size}%`;
     square.style.height = `${square_size}%`;
-    square.style.opacity = 0;
+    square.style.backgroundColor = `rgb(255, 255, 255)`;
     grid.appendChild(square);
 }
 
