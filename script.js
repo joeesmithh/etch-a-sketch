@@ -29,9 +29,10 @@ let body = document.querySelector("body");
 let grid = document.createElement('div');
 grid.setAttribute("class", "grid");
 grid.onmousedown = (e) => { mouse_down = 1; draw(e) };
-grid.onmouseup = () => { mouse_down = 0; };
-grid.onmouseleave = () => { mouse_down = 0; };
-grid.onmouseover = draw;
+grid.onmouseup = () => mouse_down = 0;
+grid.onmouseleave = () => mouse_down = 0;
+grid.onmouseover = draw; // Try draw
+grid.ondragstart = (e) => e.preventDefault(); // Prevent drag validation
 
 // Squares
 const grid_size = 16;
